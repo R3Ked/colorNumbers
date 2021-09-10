@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
-using System.Linq;
-using KModkit;
 using System.Text.RegularExpressions;
 
 public class colorNumberCode : MonoBehaviour 
@@ -61,15 +57,17 @@ public class colorNumberCode : MonoBehaviour
     void LightsOn()
     {
         if (!moduleSolved)
+        {
             led.material = colorOptions[ledIndex];
+            if (colorblindActive)
+                colorblindText.text = colorOptions[ledIndex].name;
+        }
     }
 	
 	void PickLEDColor()
 	{
         string[] buttonNames = new string[] { "one", "two", "three", "four" };
 		ledIndex = UnityEngine.Random.Range(0,4);
-        if (colorblindActive)
-            colorblindText.text = colorOptions[ledIndex].name;
         Debug.LogFormat("[Color Numbers #{0}] The color of the LED is {1}", moduleId, colorOptions[ledIndex].name);
         Debug.LogFormat("[Color Numbers #{0}] The correct button to press is button {1}", moduleId, buttonNames[ledValues[ledIndex]]);
     }
@@ -80,7 +78,7 @@ public class colorNumberCode : MonoBehaviour
         {
             Debug.LogFormat("[Color Numbers #{0}] You pressed button one", moduleId);
             button1.AddInteractionPunch();
-            GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.BigButtonPress, button1.transform);
+            audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.BigButtonPress, button1.transform);
             //Execute if the LED is red
             if (ledValues[ledIndex] == 0)
             {
@@ -106,7 +104,7 @@ public class colorNumberCode : MonoBehaviour
         {
             Debug.LogFormat("[Color Numbers #{0}] You pressed button two", moduleId);
             button2.AddInteractionPunch();
-            GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.BigButtonPress, button2.transform);
+            audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.BigButtonPress, button2.transform);
             //Execute if the LED is blue
             if (ledValues[ledIndex] == 1)
             {
@@ -132,7 +130,7 @@ public class colorNumberCode : MonoBehaviour
         {
             Debug.LogFormat("[Color Numbers #{0}] You pressed button three", moduleId);
             button3.AddInteractionPunch();
-            GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.BigButtonPress, button3.transform);
+            audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.BigButtonPress, button3.transform);
             //Execute if the LED is green
             if (ledValues[ledIndex] == 2)
             {
@@ -158,7 +156,7 @@ public class colorNumberCode : MonoBehaviour
         {
             Debug.LogFormat("[Color Numbers #{0}] You pressed button four", moduleId);
             button4.AddInteractionPunch();
-            GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.BigButtonPress, button4.transform);
+            audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.BigButtonPress, button4.transform);
             //Execute if the LED is yellow
             if (ledValues[ledIndex] == 3)
             {
