@@ -344,6 +344,11 @@ Prefab:
       propertyPath: m_Name
       value: colorNumbers
       objectReference: {fileID: 0}
+    - target: {fileID: 114605005028090758, guid: f90517b4d05500c4abae732cd2ce0b8f,
+        type: 2}
+      propertyPath: _colorblindMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f90517b4d05500c4abae732cd2ce0b8f, type: 2}
   m_IsPrefabParent: 0
